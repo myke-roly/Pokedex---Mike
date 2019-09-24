@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Pokemon Api</title>
+
+  <link rel="stylesheet" href="stylle.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <div class="container">
+    <nav class="nav">
+      <img class="logo" src="./1200px-International_Pokémon_logo.svg.webp" alt="logo-pokemon" />
+      <h1>Mike Pokedex</h1>
+      <audio src="Pokémon Theme Song.mp3" controls autoplay loop></audio>
+    </nav>
+    <div class="search-card">
+      Buscar Pokemón favorito: <br /><br/>
+      <input type="text" name="search-pokemon" class="search-pokemon" placeholder="Your favorite Pokemón" />
+      <ul class="list"></ul>
+    </div>
+    <ol id="pokedex">
+    </ol>
+  </div>
+
+
+  <script src="pokemon.js"></script>
+</body>
+</html>
