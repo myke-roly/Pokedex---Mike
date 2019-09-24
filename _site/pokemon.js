@@ -1,21 +1,23 @@
 const fetchPokemon = () => {
   const promises = [];
 
-  for(i=1; i<=807; i++) {
+  for(i=1; i<=100; i++) {
+    // Total 807 pokemón's/
     const url = `https://pokeapi.co/api/v2/pokemon/${i}`
     // Llenamos el promise con las respuesta de la peticion fetch en formato JSON
     promises.push(fetch(url).then(res => res.json()));
   }
 
   // Capturamos todas las promesas 150 en una para recorerlas y poder usarlas
-  Promise.all(promises).then(results => {
+  Promise.all(promises)
+  .then(results => {
     const pokemon = results.map(result => ({
       name: result.name,
       
       image: result.sprites['front_default'],
       type: result.types.map(type => type.type.name).join(', '),
       experience: result.base_experience,
-      ability: result.abilities.map(ability => ability.ability.name).join('--')
+      ability: result.abilities.map(ability => ability.ability.name).join(' / ')
     }));
     // console.log(pokemon);
   
@@ -55,25 +57,27 @@ const viewSearch = (pokemon) => {
 
   let pokemons;
 
-  input.addEventListener('change', (e) => {
+  input.addEventListener('keyup', (e) => {
+
+    const key = e.target.value.toLowerCase();
     let searchPokemon = pokemon.map(pokeman => {
-      //Buscamos Pokemons por letra inicial
-      if(e.target.value === pokeman.name.charAt(0)) {
-        return `
-          <li class="card">
-            <h2>Ex: ${pokeman.experience}</h2>
+        //Buscamos Pokemons por letra inicial
+        
+      if(pokeman.name.indexOf(key) !== -1 && key.length > 2 || key === pokeman.name.charAt()) {
+          const displayPokemon = `<li class="card card-efect">
+            <h2>Exp: ${pokeman.experience}</h2>
             <img class="card-image" src=${pokeman.image} alt="${pokeman.name}" />
             <h2 class="card-title">${pokeman.name}</h2>
             <span>♀: ${pokeman.ability}</span>
             <p class="card-subtitle">♦ Type: ${pokeman.type}</p>
           </li>
-        `
+        `        
+        return displayPokemon;
       }
     }).join("");
-
+    
     list.innerHTML = searchPokemon;
   });
 }
-
-
-fetchPokemon();
+  
+fetchPokemon()

@@ -53,10 +53,12 @@ h1 {
 }
 
 .card:hover {
-  animation: animate 1s ease-in-out;
+  animation: animate 500ms ease-in-out;
   cursor: pointer;
   opacity: .95;
 }
+
+
 
 @keyframes animate {
   0%{transform: translateY(-6px);}
@@ -87,15 +89,19 @@ h1 {
   right: 10px;
 }
 
+h2 {
+  color: #22abc4;
+}
+
 .card-title {
   font-size: 2rem;
   text-transform: uppercase;
-  color: #22abc4;
+  color: #fff;
 }
 
 span {
   font-size: 19px;
-  color: #22abc4;
+  color: #999;
   
 }
 
