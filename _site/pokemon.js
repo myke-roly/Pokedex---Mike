@@ -26,7 +26,7 @@ const fetchPokemon = () => {
   });
 }
 
-
+// Función para mostrar la lista completa de los Pokemón's.
 const displayPokemon = (pokemon) => {
   const pokedex = document.getElementById('pokedex');
   // Capturamos los datos de los poekomon's usamos .map() para imprmirlo
@@ -62,7 +62,6 @@ const viewSearch = (pokemon) => {
     const key = e.target.value.toLowerCase();
     let searchPokemon = pokemon.map(pokeman => {
         //Buscamos Pokemons por letra inicial
-        
       if(pokeman.name.indexOf(key) !== -1 && key.length > 2 || key === pokeman.name.charAt()) {
           const displayPokemon = `<li class="card card-efect">
             <h2>Exp: ${pokeman.experience}</h2>
